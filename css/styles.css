@@ -139,3 +139,13 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+.precio {
+  text-align: right;
+  font-weight: bold;
+  transition: ease-in .2s;
+}
+
+.precio:hover {
+  color: #15b485;
+  font-size: 1.1em;
+}
