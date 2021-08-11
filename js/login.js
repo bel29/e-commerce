@@ -10,11 +10,11 @@ const form = document.getElementById("form");
 
 form.addEventListener("submit",e=> {
     e.preventDefault();
-    let regexEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,4})+$/;
+    let regexEmail = /^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,4})+$/
     if (!regexEmail.test(email.value)) {
         alert("email is not valid");
     }
-    if (pass.value.length < 6) {
+    else if (pass.value.length < 6) {
         alert("Password must have more than 6 digits");
     }
     else {
