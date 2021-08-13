@@ -1,122 +1,91 @@
-<!DOCTYPE html>
-<!-- saved from url=(0049)https://getbootstrap.com/docs/4.3/examples/album/ -->
+<!doctype html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <title>eMercado - Todo lo que busques está aquí</title>
+    <link rel="stylesheet" href="Login/fonts/icomoon/style.css">
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
-  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
-  
-  <style>
-    html, body{
-      height: 100%;
-    }
+    <link rel="stylesheet" href="Login/css/owl.carousel.min.css">
 
-    body {
-      display: -ms-flexbox;
-      display: flex;
-      -ms-flex-align: center;
-      align-items: center;
-      padding-top: 40px;
-      padding-bottom: 40px;
-      background-color: #f5f5f53a;
-    }
-
-    .signin {
-      width: 100%;
-      max-width: 330px;
-      padding: 15px;
-      margin: auto;
-    }
-    .avatar{
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      position: absolute;
-      top: -50px;
-      left: calc(50% - 50px);
-    }
-    .login-form{
-      width: 320px;
-      height: 420px;
-      background-color: rgba(44, 44, 44, 0.295); 
-      color: #fff;
-      top: 50%;
-      left: 50%;
-      position: absolute;
-      transform: translate(-50%,-50%);
-      box-sizing: border-box;
-      padding:70px 30px ;
-      border-radius: 5%;
-    }
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="Login/css/bootstrap.min.css">
     
-    .label{
-      margin: 0;
-      padding: 0;
-      font-weight: bold;
-      display: block;
-    }
-    .login-form input{
-      width: 100%;
-      margin-bottom: 20px;
-    }
-    .form-control{
-      border: none;
-      border-bottom: 1px solid #fff;
-      background: transparent;
-      outline: none;
-      height: 40px;
-      color: #fff;
-      font-size: 16px;
-    }
-    .button{
-      border: none;
-      outline: none;
-      height: 40px;
-      background: rgb(70, 68, 68);
-      font-size: 18px;
-      border-radius: 20px;
-    }
-    .login-form a{
-      text-decoration: none;
-      font-size: 13px;
-      line-height: 20px;
-      color: black;
-    }
-    .login-form a:hover{
-      color: white;
-    }
-  </style>
-</head>
+    <!-- Style -->
+    <link rel="stylesheet" href="Login/css/style.css">
 
-<body class="text-center">
+    <title>Login #9</title>
+  </head>
+  <body>
   
-  <div class="login-form">
 
-  <img class="avatar" src="file:///C:/Users/gateway/Desktop/jap%20belu/e-commerce/img/login.png" alt="" width="72" height="72">
-  <h1 class="h3 mb-3 font-weight-normal">Login here</h1>
+  
+  <div class="content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- <div class="col-md-6 order-md-2">
+          <img src="images/undraw_file_sync_ot38.svg" alt="Image" class="img-fluid">
+        </div> -->
+        <div class="col-md-6 contents">
+          <div class="row justify-content-center">
+            <div class="col-md-12">
+              <div class="form-block">
+                  <div class="mb-4">
+                  <h3>Sign In to <strong>Colorlib</strong></h3>
+                  <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+                </div>
+                <form action="#" method="post">
+                  <div class="form-group first">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" id="username">
 
-  <form id= "form" class="signin">
-    <label for="inputEmail" class="sr-only email">Email address</label>
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  </div>
+                  <div class="form-group last mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password">
+                    
+                  </div>
+                  
+                  <div class="d-flex mb-5 align-items-center">
+                    <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                      <input type="checkbox" checked="checked"/>
+                      <div class="control__indicator"></div>
+                    </label>
+                    <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
+                  </div>
 
-    <label for="inputPassword" class="sr-only password">Password</label>
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <br>
-    <button class="btn btn-lg btn-primary btn-block button" type="submit" >Sign in</button> <br>
-    <a href="#">Lost your password</a> <br>
-    <a href="#">Dont have an account</a>
-    <br> <br> <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
-  </form>
+                  <input type="submit" value="Log In" class="btn btn-pill text-white btn-block btn-primary">
+
+                  <span class="d-block text-center my-4 text-muted"> or sign in with</span>
+                  
+                  <div class="social-login text-center">
+                    <a href="#" class="facebook">
+                      <span class="icon-facebook mr-3"></span> 
+                    </a>
+                    <a href="#" class="twitter">
+                      <span class="icon-twitter mr-3"></span> 
+                    </a>
+                    <a href="#" class="google">
+                      <span class="icon-google mr-3"></span> 
+                    </a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
   </div>
-  <script src="js/init.js"></script>
-  <script src="js/login.js"></script>
-</body>
+
+  
+    <script src="Login/js/jquery-3.3.1.min.js"></script>
+    <script src="Login/js/popper.min.js"></script>
+    <script src="Login/js/bootstrap.min.js"></script>
+    <script src="Login/js/main.js"></script>
+  </body>
 </html>
