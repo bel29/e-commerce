@@ -28,8 +28,9 @@ function showProductsList(array){
         <a href="product-info.html" class=" list-group-item-action">
         <div class="list-group-item list-group-item-action">
             <div class="row">
-                <div class="col-3">
+                <div class=" snip1325 snip0015 col-3">
                 <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
+                <figcaption> </figcaption>
                 </div>
                 <div class="col">
                     <div class="d-flex w-100 justify-content-between">

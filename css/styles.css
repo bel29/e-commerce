@@ -146,7 +146,34 @@ a.custom-card:hover {
 }
 
 .precio:hover {
-  color: #15b485;
+  color: #e77ff5;
   font-size: 1.1em;
 }
 
+.snip0015 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.snip0015 img {
+  opacity: 1;
+  width: 100%;
+  -webkit-transition: opacity 0.35s;
+  transition: opacity 0.35s;
+}
+
+
+
+.snip0015:hover img {
+  opacity: 0.35;
+}
+
+
+
+.snip1325 img {
+  
+  transition: all 2s ease-out;
+}
+.snip1325:hover img,
+.snip1325.hover img {
+  transform: rotate(20deg);
+}
