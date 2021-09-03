@@ -44,4 +44,32 @@ var getJSONData = function(url){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+  agregarNombreUsuario()
+  if (document.getElementById("cerrar")!==null){
+    document.getElementById("cerrar").addEventListener("click", function(event){
+       localStorage.clear();
+    })
+  }
 });
+
+
+
+function agregarNombreUsuario(){
+  if (localStorage.getItem("usuario")!=null){
+    localStorage.getItem("usuario")
+    var datos = JSON.parse(localStorage.getItem("usuario"))
+
+   
+ //document.getElementById("dropdownMenu").innerHTML += " "+ datos[0]
+    var agregar= `<div class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <strong> Bienvenido </strong> ${datos[0]}</a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                      <a class="dropdown-item" href="my-profile.html"> Mi Perfil </a>
+                      <a id="cerrar" class="dropdown-item" href="login.html"> Cerrar sesión </a>
+                  </div>
+                </div>`;
+    
+    document.getElementById("navbar").innerHTML += agregar;
+  }
+}
