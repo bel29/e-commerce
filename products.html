@@ -22,7 +22,16 @@
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <strong> Bienvenido </strong>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="my-profile.html">Mi Perfil</a>
+            <a class="dropdown-item" href="">Cerrar Sesion</a>
+           
+          </div>
+        </div>
     </nav>
     <main class="pb-5">
       <div class="text-center p-4">
@@ -36,7 +45,65 @@
           </figcaption>
         </figure>
       </div>
+      <!--entrega 2-->
       <div class="container p-5">
+        
+Producto a buscar: <input type="text" id="myText" value="">
+
+<button onclick="myFunction()">Buscar</button> 
+
+<script>
+//function myFunction() {
+//var x = document.getElementById("myText").value;
+//showProduct(x)
+   let textBox = document.getElementById('myText');
+   textBox.addEventListener('keydown', (event) => {
+            console.log(`key=${event.key},code=${event.code}`);
+           
+        });
+  // }
+</script>
+
+        <div class="row">
+          
+          <div class="col text-right">
+            
+              <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                
+                  <label class="btn btn-light active" id="sortAsc" >
+                      <input type="radio" name="options" autocomplete="off" checked>$
+                  </label>
+                  <label class="btn btn-light" id="sortDesc" >
+                      <input type="radio" name="options" autocomplete="off"> <small>$</small>
+                  </label>
+                  <label class="btn btn-light" id="sortByProdC" >
+                      <input type="radio" name="options" autocomplete="off"><i class="fas fa-sort-amount-down mr-1"></i>Vendidos.
+                  </label>
+              </div>
+          </div>
+      </div>
+        <div class="row justify-content-end">
+          <div class="col-md-6"></div>
+            <div class="col-md-6 col-sm-12 mb-1 container">
+              <div class="row container p-0 m-0">
+                <div class="col">
+                  <p class="font-weight-normal text-right my-2">Precio.</p>
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="min." id="rangeFilterCostMin">
+                </div>
+                <div class="col">
+                  <input class="form-control" type="number" placeholder="máx." id="rangeFilterCostMax">
+                </div>
+                <div class="col-3 p-0">
+                  <div class="btn-group" role="group">
+                    <button class="btn btn-light btn-block" id="rangeFilterCost">Filtrar</button>
+                    <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
       <!-- Agregado entrega 1 -->
       <div class="row">
       <div class="list-group" id="product-list-container"></div>
@@ -57,5 +124,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/products.js"></script>
+    <script src="js/index.js"></script>
   </body>
 </html>

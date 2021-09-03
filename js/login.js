@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
+   console.log(localStorage)
     var array = []
     
     const email = document.getElementById("inputEmail");
@@ -20,12 +21,13 @@ document.addEventListener("DOMContentLoaded", function(e){
         else {
             location.href= "index.html";
         }
+        
     })
     
- 
-    var emvalue = document.getElementById("inputEmail").value
-    var passvale = document.getElementById("inputPassword").value
-    array.push([emvalue,passvale])
-    localStorage.setItem("login",JSON.stringify(array))
+       var usr = email.value
+       var passvalue = pass.value
+       array.push(usr,passvalue)
+       localStorage.setItem("usuario",JSON.stringify(array))
+    
     
 });
