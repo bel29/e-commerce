@@ -109,7 +109,7 @@ function sortAndShowProducts(sortCriteria, prodArray){
 
     productsArray = sortProducts(currentSortCriteria, productsArray);
 
-    //Muestro las categorías ordenadas
+    //Muestro los prod ordenados
     showProductsList();
 }
 //Funcion para mostrar los productos
@@ -146,42 +146,4 @@ function showProductsList(){
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner
     }
 }
-document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCTS_URL).then(function(resultObj){
-        if (resultObj.status === "ok")
-        {
-           prod= resultObj.data;
-        }
-    });
-})
-function showProduct(x){
-    let htmlContentToAppend = "";
-    for(let i = 0; i < prod.length ; i++){
-        let product = prod[i].name;
-        if(product == x){
-            htmlContentToAppend += `
-        <a href="product-info.html" class=" list-group-item-action">
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class=" snip1325 snip0015 col-3">
-                <img src="` + prod[i].imgSrc + `" alt="` + prod[i].description + `" class="img-thumbnail">
-                <figcaption> </figcaption>
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ prod[i].name +`</h4>
-                        <small class="text-muted">` + prod[i].soldCount + ` vendidos</small>
-                        </div>
-                        <p class="text-muted">` + prod[i].description + ` </p>
-                        <p class = "mb-1 precio">  `+ prod[i].currency+ `   `+prod[i].cost +`   </p>
 
-                </div>
-            </div>
-        </div>
-        </a>
-        `
-        }
-        document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner
-    }
-  
-}
