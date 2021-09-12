@@ -177,3 +177,35 @@ a.custom-card:hover {
 .snip1325.hover img {
   transform: rotate(20deg);
 }
+.bdge {
+ 
+  background-color: orange;
+  color: #fff;
+  font-size: 11px;
+  padding: 8px;
+
+  line-height: 3px
+}
+
+.comments {
+
+  text-underline-position: under;
+  cursor: pointer
+}
+
+.dot {
+  height: 7px;
+  
+  margin-top: 3px;
+  background-color: #bbb;
+ 
+  
+}
+
+.hit-voting:hover {
+  color: blue
+}
+
+.hit-voting {
+  cursor: pointer
+}
