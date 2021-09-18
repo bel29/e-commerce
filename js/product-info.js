@@ -1,18 +1,22 @@
-var prod= {};
+var prod= [];
 
 function showImagesGallery(array){
 
+    let imageSrc = array[0];
     let htmlContentToAppend = "";
-
+    htmlContentToAppend += `
+    <div class="carousel-inner">
+<div class="carousel-item active">
+  <img class="d-block w-100" src="${imageSrc}" alt="First slide">
+</div> `
     for(let i = 0; i < array.length; i++){
-        let imageSrc = array[i];
+        let img = array[i]
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-            </div>
-        </div>
+      
+    <div class="carousel-item">
+      <img class="d-block w-100" src="${img}" alt="Second slide">
+    </div>
         `
 
         document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;

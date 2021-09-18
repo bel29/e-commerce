@@ -3,8 +3,8 @@
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e){
    
-    var array = []
     
+    var array = []
     const email = document.getElementById("inputEmail");
     const pass = document.getElementById("inputPassword");
     const form = document.getElementById("form");
@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
         else {
             location.href= "index.html";
+            
         }
-        
-        
-           var usr = email.value
-           var passvalue = pass.value
-           array.push(usr,passvalue)
-           localStorage.setItem("usuario",JSON.stringify(array))
+        var usr = email.value
+        var passvalue = pass.value
+        array.push(usr,passvalue)
+        localStorage.setItem("usuario",JSON.stringify(array))
+     
         
     })
     
