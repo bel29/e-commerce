@@ -89,12 +89,12 @@
         <dd>
           <p id="productDescription"></p>
         </dd>
-
+        
         <dt>Cantidad de articulos vendidos</dt>
         <dd>
           <p id="SoldCount"></p>
         </dd>
-
+        
         <dt>Categoria a la que pertenece</dt>
         <dd>
           <p id="productCategory"></p>
@@ -104,41 +104,43 @@
         <dd>
           <p id="productCost"></p>
         </dd>
-
-       
+        
+        
       </dl>
-     
+      
       <div class="container mt-5 mb-5">
         <div class="d-flex row">
-            <div class="d-flex flex-column col-md-8">
-                <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
+          <div class="d-flex flex-column col-md-8">
+            <div class="d-flex flex-row align-items-center text-left comment-top p-2 bg-white border-bottom px-4">
               
-                
-                        <br>
-                        <div class="d-flex flex-row align-items-center align-content-center "><span class="mr-2 comments">4 Comentarios</span><span class="mr-2 dot"></span><span>hace 6 horas</span></div>
-                    </div>
-                </div>
-                <div  class="coment-bottom bg-white ">
-                    <div class="d-flex  add-comment-section mt-4 mb-4">
-                      <img class="img-fluid img-responsive rounded-circle mr-2" src="../e-commerce/yo.jpg" width="38">
-                      <input id="comentario" type="text" class="form-control mr-3" placeholder="Agregar comentario">
-                      <select class="custom-select" id="score">
-                        <option selected>Puntaje</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
-                      <button class="btn btn-primary" type="submit" onclick="agregarComentario()">Comentar</button></div>
-                      <div class="commented-section mt-2" id="comment">
-                        
-                    </div>
-                </div>
+              
+              <br>
+              <div class="d-flex flex-row align-items-center align-content-center "><span class="mr-2 comments">4 Comentarios</span><span class="mr-2 dot"></span><span>hace 6 horas</span></div>
             </div>
+          </div>
+          <div  class="coment-bottom bg-white ">
+            <div class="d-flex  add-comment-section mt-4 mb-4">
+              <img class="img-fluid img-responsive rounded-circle mr-2" src="../e-commerce/yo.jpg" width="38">
+              <input id="comentario" type="text" class="form-control mr-3" placeholder="Agregar comentario">
+              <select class="custom-select" id="score">
+                <option selected>Puntaje</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+              <button class="btn btn-primary" type="submit" onclick="agregarComentario()">Comentar</button></div>
+              <div class="commented-section mt-2" id="comment">
+
+                
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-  
+      </div>
+      <p>Productos relacionados</p>
+      <dd id="relatedProducts" class="col-md-8"></dd>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
   </div>
