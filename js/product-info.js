@@ -50,21 +50,21 @@ document.addEventListener("DOMContentLoaded", function(e){
                 if (resultObj2.status === "ok") {
                     productos = resultObj2.data;
                     related = prod.relatedProducts;
-                    agregarProductosRelacionados(productos, related)
+                    mostrarProductosRelacionados(productos, related)
                 
                 }
             });
         }
         });
 
-        function agregarProductosRelacionados(products, related){
+        function mostrarProductosRelacionados(products, related){
             let htmlContentToAppend = "";
         
             for (let i = 0; i < related.length; i++) {
                 let prodRel = products[related[i]];
                 htmlContentToAppend += `
-                <td>
-                <div  class="card text-dark bg-light mb-3" style="max-width: 18rem; display= inline-block;" >
+                <td >
+                <div  class="card text-dark bg-light " style="max-width: 18rem; display= inline-block;" >
                     <img class="card-img-top" src="${prodRel.imgSrc}" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">${prodRel.name}</h5>
