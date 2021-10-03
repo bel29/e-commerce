@@ -63,14 +63,17 @@ document.addEventListener("DOMContentLoaded", function(e){
             for (let i = 0; i < related.length; i++) {
                 let prodRel = products[related[i]];
                 htmlContentToAppend += `
-                <div class="card" style="width:40%; display:inline-block">
+                <td>
+                <div  class="card text-dark bg-light mb-3" style="max-width: 18rem; display= inline-block;" >
                     <img class="card-img-top" src="${prodRel.imgSrc}" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">${prodRel.name}</h5>
                       <p class="card-text">${prodRel.description}</p>
                       <a href="#" class="btn btn-primary">Ver</a>
                     </div>
-                </div>`
+                </div>
+                </td>
+                `
                 document.getElementById("relatedProducts").innerHTML = htmlContentToAppend;
             }
         }
