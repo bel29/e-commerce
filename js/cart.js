@@ -13,6 +13,7 @@ function updateProductoSubtotal(id){
     }
     document.getElementById("subtotal"+id).innerHTML = cantidad*costo;
     sumaSubtotales();
+    
 }
 
 
@@ -82,10 +83,16 @@ function sumaSubtotales(){
     }
 
     document.getElementById("sumaSubtotal").innerHTML = subtotal;
-    document.getElementById("ticketsubtotal").innerHTML +=  ` <h6 class=" text-muted"> ${subtotal} </h6>`;
-    document.getElementById("total").innerHTML +=  ` <h6> <strong> ${subtotal} </strong></h6>`;//mas costo envio
+   costos()
 }
+function costos(){
+var subtot = parseFloat( document.getElementById("sumaSubtotal").innerHTML)
+console.log(subtot)
+var costoenvio = parseFloat(document.getElementById("envio").innerHTML)
+document.getElementById("ticketsubtotal").innerHTML =  ` <h6 class=" text-muted"> ${subtot + costoenvio} </h6>`;
+document.getElementById("total").innerHTML =  ` <h6> <strong> ${subtot} </strong></h6>`;//mas costo envio
 
+}
 function convertir(costo, currency){
     if (moneda == 'UYU' && currency=='USD'){
         costo = costo*40;
@@ -112,13 +119,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         moneda = 'UYU';
         showCarrito();
         sumaSubtotales();
+    
         document.getElementById("uruguayos").addEventListener("click", function(e){
             moneda = 'UYU';
             cambiarMonedas();
+            
         });
         document.getElementById("dolares").addEventListener("click", function(e){
             moneda = 'USD';
             cambiarMonedas();
+            
         });
         console.log(productosCarrito);
     })
