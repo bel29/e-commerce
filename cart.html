@@ -59,14 +59,148 @@
       </ul>
     </div>
 </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+<main role="main" class="pb-5">
+  <div class="text-center p-4">
+    <h2>Carrito de compras</h2>
+  </div>
+
+  <div style="margin-left: 65%">
+    Moneda:
+    <button id="uruguayos" class="btn btn-primary">pesos</button>
+    <button id="dolares" class="btn btn-secondary">dolares</button>
+  </div>
+<br>
+<br>
+<!--TABLA CON PRODUCTOS DEL CARRITO-->
+  <div class="container" id="cart">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="carritoo"></tbody>
+    </table>
+  </div>
+  <!--TIPO DE ENVIO-->
+  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
+    <h3>Tipo de envío</h3>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios1"
+        value="option1"
+        checked
+      />
+      <label class="form-check-label" for="exampleRadios1">
+        Premium 2 a 5 dias (15%)
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios1"
+        value="option1"
+        checked
+      />
+      <label class="form-check-label" for="exampleRadios1">
+        Express 5 a 8 dias (7%)
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios1"
+        value="option1"
+        checked
+      />
+      <label class="form-check-label" for="exampleRadios1">
+        Standard 12 a 15 dias (5%)
+      </label>
     </div>
   </div>
+  <!--ENVIO-->
+  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
+    <h3>Direccion de envio</h3>
+
+    <form>
+      <div id="emailHelp" class="form-text">No compartiremos esta informacion con nadie.</div>
+      <br> <div style="column-count: 3;">
+      <div class="mb-3">
+        <label for="" class="form-label">Calle</label>
+        <input type="" class="form-control" id="calle" required>
+        
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Numero</label>
+        <input type="number" class="form-control" id="numero" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Esquina</label>
+        <input type="" class="form-control" id="esquina" required>
+      </div>
+    </div>
+    </form>
+  </div>
+<!--COSTOS-->
+  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
+    <h3>Costos</h3>
+    <div class="card" >
+      <div class="card-body">
+        <div style="column-count: 2; column-gap: 80%; margin-bottom: 3px;">
+        <h5 class="card-title" >Subtotal</h5>
+        <h6 style="margin-left: 0;" id="ticketsubtotal"></h6>
+      </div>
+        <h6 class="card-subtitle mb-4 text-muted">Costo unitario del producto por cantidad</h6>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Costo de Envio</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Segun el tipo de envio</h6>
+      </div>
+      <div class="card-body">
+        <div style="column-count: 2; column-gap: 80%; margin-bottom: 3px;">
+        <h5 class="card-title">Total($)</h5>
+        <h6 style="margin-left: 0;" id="total"></h6>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!--FORMA DE PAGO-->
+  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
+
+    <div class="card" >
+      <div class="card-body">
+        <h5  class="card-title ">Forma de pago</h5>
+        <div style="column-count: 2; width: 50%;">
+        <h6 class="card-subtitle text-muted">No ha seleccionado </h6>
+       <h6 class="mt-2"><a href="#" class="card-link mt-2">Seleccionar</a></h6> 
+      </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="text-muted bg-light">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Volver arriba</a>
+    </p>
+    <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+    <p>
+      Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la
+      letra del obligatorio.
+    </p>
+  </div>
+</footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
