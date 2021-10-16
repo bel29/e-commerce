@@ -1,31 +1,31 @@
-let productosCarrito=[];
+let productosCarrito = [];
 
 
 let moneda = "UYU";
 
 /*completa la función para actualizar el subtotal del producto al modificar la cantidad del mismo*/
-function updateProductoSubtotal(id){
-    let costo = convertir(productosCarrito[id-1].unitCost, productosCarrito[id-1].currency);
+function updateProductoSubtotal(id) {
+    let costo = convertir(productosCarrito[id - 1].unitCost, productosCarrito[id - 1].currency);
     let cantidad = document.getElementById(id).value;
-    if (cantidad<=0){
-    	cantidad = 1;
-    	document.getElementById(id).value = 1;
+    if (cantidad <= 0) {
+        cantidad = 1;
+        document.getElementById(id).value = 1;
     }
-    document.getElementById("subtotal"+id).innerHTML = cantidad*costo;
+    document.getElementById("subtotal" + id).innerHTML = cantidad * costo;
     sumaSubtotales();
-    
+
 }
 
 
 /*modificar la función showCarrito para que aparezca el subtotal del producto en base a la cantidad y precio unitario*/
-function showCarrito(){
+function showCarrito() {
     /*mostrar los productos del carrito con el input correspondiente a la cantidad*/
     let htmlToAppend = "";
     let htmlToAppend2 = "";
-    
+
     let id = 1;
     let costo = 0;
-    for(let article of productosCarrito){
+    for (let article of productosCarrito) {
         costo = convertir(article.unitCost, article.currency);
 
         htmlToAppend += `
@@ -36,8 +36,8 @@ function showCarrito(){
         <td id="subtotal${id}">${article.count * costo}</td>
         <td class="align-middle"><input id="${id}" onchange="updateProductoSubtotal(${id});" type="number" min ="1" value=${article.count}></td>
         </tr>`
-        
-        id++;         
+
+        id++;
     }
 
     htmlToAppend2 = `
@@ -48,90 +48,89 @@ function showCarrito(){
         <td>Suma de subtotales </td>
         <td id="sumaSubtotal"></td>
         </tr>`
-  
-    
 
-    document.getElementById("carritoo").innerHTML = htmlToAppend+htmlToAppend2;
-  
+
+
+    document.getElementById("carritoo").innerHTML = htmlToAppend + htmlToAppend2;
+
 }
 
 
-function cambiarMonedas(){
+function cambiarMonedas() {
     let costoUnitario = 0;
     let cantidad = 0;
-    for(let i=1;i<=productosCarrito.length;i++){
-        costoUnitario = convertir(productosCarrito[i-1].unitCost, productosCarrito[i-1].currency)
+    for (let i = 1; i <= productosCarrito.length; i++) {
+        costoUnitario = convertir(productosCarrito[i - 1].unitCost, productosCarrito[i - 1].currency)
         cantidad = document.getElementById(i).value;
-        if (cantidad<=0){
-    		cantidad = 1;
-    		document.getElementById(i).value = 1;
-    	}
-        document.getElementById("subtotal"+i).innerHTML = cantidad*costoUnitario;
-        document.getElementById("unitCost"+i).innerHTML = moneda +" "+costoUnitario;
-     
+        if (cantidad <= 0) {
+            cantidad = 1;
+            document.getElementById(i).value = 1;        }
+        document.getElementById("subtotal" + i).innerHTML = cantidad * costoUnitario;
+        document.getElementById("unitCost" + i).innerHTML = moneda + " " + costoUnitario;
+
     }
     sumaSubtotales();
 }
 
 //mostrar suma de subtotales
-function sumaSubtotales(){
-   
+function sumaSubtotales() {
+
     let subtotal = 0;
-    for(let i=1; i<=productosCarrito.length; i++){
-   
-        subtotal = subtotal + parseFloat(document.getElementById("subtotal"+i).textContent);
+    for (let i = 1; i <= productosCarrito.length; i++) {
+
+        subtotal = subtotal + parseFloat(document.getElementById("subtotal" + i).textContent);
     }
 
     document.getElementById("sumaSubtotal").innerHTML = subtotal;
-   costos()
+    costos()
 }
-function costos(){
-var subtot = parseFloat( document.getElementById("sumaSubtotal").innerHTML)
-console.log(subtot)
-var costoenvio = parseFloat(document.getElementById("envio").innerHTML)
-document.getElementById("ticketsubtotal").innerHTML =  ` <h6 class=" text-muted"> ${subtot + costoenvio} </h6>`;
-document.getElementById("total").innerHTML =  ` <h6> <strong> ${subtot} </strong></h6>`;//mas costo envio
+function costos() {
+    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
+    console.log(subtot)
+    var costoenvio = parseFloat(document.getElementById("envio").innerHTML)
+    document.getElementById("ticketsubtotal").innerHTML = ` <h6 class=" text-muted"> ${subtot + costoenvio} </h6>`;
+    document.getElementById("total").innerHTML = ` <h6> <strong> ${subtot} </strong></h6>`;//mas costo envio
 
 }
-function convertir(costo, currency){
-    if (moneda == 'UYU' && currency=='USD'){
-        costo = costo*40;
-    } else if (moneda == 'USD' && currency=='UYU'){
-        costo = costo/40;
+function convertir(costo, currency) {
+    if (moneda == 'UYU' && currency == 'USD') {
+        costo = costo * 40;
+    } else if (moneda == 'USD' && currency == 'UYU') {
+        costo = costo / 40;
     }
     return costo;
 }
 
-async function getCarrito(url){
-    
+async function getCarrito(url) {
+
     return fetch(url)
-    .then(respuesta=>{
-        return respuesta.json();
-    })
-    
+        .then(respuesta => {
+            return respuesta.json();
+        })
+
 }
 
 
-document.addEventListener("DOMContentLoaded", function(e){
+document.addEventListener("DOMContentLoaded", function (e) {
     getCarrito("https://japdevdep.github.io/ecommerce-api/cart/654.json")
-    .then(respuesta=>{
-        productosCarrito = respuesta.articles;
-        moneda = 'UYU';
-        showCarrito();
-        sumaSubtotales();
-    
-        document.getElementById("uruguayos").addEventListener("click", function(e){
+        .then(respuesta => {
+            productosCarrito = respuesta.articles;
             moneda = 'UYU';
-            cambiarMonedas();
-            
-        });
-        document.getElementById("dolares").addEventListener("click", function(e){
-            moneda = 'USD';
-            cambiarMonedas();
-            
-        });
-        console.log(productosCarrito);
-    })
+            showCarrito();
+            sumaSubtotales();
+
+            document.getElementById("uruguayos").addEventListener("click", function (e) {
+                moneda = 'UYU';
+                cambiarMonedas();
+
+            });
+            document.getElementById("dolares").addEventListener("click", function (e) {
+                moneda = 'USD';
+                cambiarMonedas();
+
+            });
+            console.log(productosCarrito);
+        })
 })
 
 
