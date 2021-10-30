@@ -13,6 +13,28 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="shortcut icon" href="img/login.png">
   <style>
+       body {
+      background: #f7f7ff;
+      margin-top: 20px;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 0 solid transparent;
+      border-radius: .25rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+    }
+
+    .me-2 {
+      margin-right: .5rem !important;
+    }
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -59,26 +81,46 @@
       </ul>
     </div>
 </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+<div class="container p-5">
+  <div class="row">
+      <div class="col-md-6">
+          <form onsubmit="return saveChanges()" autocomplete="off">
+              <h3>Usuario: <span id="userNamePerfil"></span></h3>
+              <div class="form-group">
+                  <input type="text" class="data form-control" id="nombre" placeholder="Nombre">
+              </div>
+              <div class="form-group">
+                  <input type="number" class="data form-control" id="edad" placeholder="Edad" min="1">
+              </div>
+              <div class="form-group">
+                  <input type="email" class="data form-control" id="mail" placeholder="E-mail">
+              </div>
+              <div class="form-group">
+                  <input type="text" class="data form-control" id="tel" placeholder="teléfono">
+              </div>
+              <!-- <button class="btn btn-primary mb-2" onclick="return saveChanges()">Guardar cambios</button> -->
+              <button type="submit" class="btn btn-primary mb-2">Guardar</button>
+          </form>
+      </div>
+      <div class="col-md-6">
+          <div class="row">
+              <img src="" id="imgPerfil" class="profileIMG data">
+          </div>
+          <br>
+          <input type="file" id="imgInput" accept="image/png" onclick="previewImage()" style="color: transparent;" class="mt-2 ">
+      
+      </div>
   </div>
-  <footer class="text-muted bg-light">
-    <div class="container">
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
-    </div>
-  </footer>
-  <div class="alert fade alert-success" role="alert" id="alertResult">
-    <span id="resultSpan"></span>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+</div>
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Volver arriba</a>
+    </p>
+    <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
+    <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
   </div>
+</footer>
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
@@ -87,6 +129,7 @@
       <div></div>
     </div>
   </div>
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
