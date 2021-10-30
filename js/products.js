@@ -122,26 +122,18 @@ function showProductsList(){
         ((maxCost == undefined) || (maxCost != undefined && parseInt(product.cost) <= maxCost))){
 
         htmlContentToAppend += `
-        <a href="product-info.html" class=" list-group-item-action">
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class=" snip1325 snip0015 col-3">
-                <img src="` + product.imgSrc + `" alt="` + product.description + `" class="img-thumbnail">
-                <figcaption> </figcaption>
+            <div class="col-md-5 text-center">
+              <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                <img class="bd-placeholder-img card-img-top" src="${product.imgSrc}">
+                <h3 class="m-3" id="nom-prod">${product.name}</h3>
+                <div class="card-body">
+                  <p class="card-text">${product.description}</p>
+                  <div id="precio-prod"> ${product.cost}  ${product.currency}</div>
+                  <small class="m-3 text-muted"> ${product.soldCount} artículos vendidos</small>
                 </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ product.name +`</h4>
-                        <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                        </div>
-                        <p class="text-muted">` + product.description + ` </p>
-                        <p class = "mb-1 precio">  `+ product.currency+ `   `+product.cost +`   </p>
-
-                </div>
+              </a>
             </div>
-        </div>
-        </a>
-        `
+          `
         }
         document.getElementById("product-list-container").innerHTML = htmlContentToAppend; //Los agrego con inner
     }
