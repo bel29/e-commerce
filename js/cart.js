@@ -157,20 +157,20 @@ document.getElementById("standard").addEventListener("click", function (e) {
      <div class="form-group">
        <label for="uname">Numero de tarjeta:</label>
        <input type="text" class="form-control" id="numtarjeta" placeholder="Ingrese numero de tarjeta" required>
-       <div class="valid-feedback">Valid.</div>
-       <div class="invalid-feedback">Please fill out this field.</div>
+       <div class="valid-feedback">Valido.</div>
+       <div class="invalid-feedback">Complete este campo.</div>
      </div>
      <div class="form-group">
        <label for="pwd">Codigo de seg:</label>
        <input type="password" class="form-control" id="codigo" placeholder="Ingrese codigo"  required>
-       <div class="valid-feedback">Valid.</div>
-       <div class="invalid-feedback">Please fill out this field.</div>
+       <div class="valid-feedback">Valido.</div>
+       <div class="invalid-feedback">Complete este campo.</div>
      </div>
      <div class="form-group">
        <label for="pwd">Vencimiento (MM/AA):</label>
        <input type="password" class="form-control" id="vencimiento" placeholder="Ingrese vencimiento"  required>
-       <div class="valid-feedback">Valid.</div>
-       <div class="invalid-feedback">Please fill out this field.</div>
+       <div class="valid-feedback">Valido.</div>
+       <div class="invalid-feedback">Complete este campo.</div>
      </div>
     
    </form>`
