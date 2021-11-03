@@ -87,9 +87,8 @@ function sumaSubtotales() {
 function costos() {
     var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
     console.log(subtot)
-    var costoenvio = parseFloat(document.getElementById("envio").innerHTML)
-    document.getElementById("ticketsubtotal").innerHTML = ` <h6 class=" text-muted"> ${subtot + costoenvio} </h6>`;
-    document.getElementById("total").innerHTML = ` <h6> <strong> ${subtot} </strong></h6>`;//mas costo envio
+    document.getElementById("ticketsubtotal").innerHTML = ` <h6 class=" text-muted"> ${subtot } </h6>`;
+   //mas costo envio
 
 }
 function convertir(costo, currency) {
@@ -133,5 +132,57 @@ document.addEventListener("DOMContentLoaded", function (e) {
         })
 })
 
+document.getElementById("premium").addEventListener("click", function (e) {
+    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
+    var x = subtot + subtot * 0.15
+    document.getElementById("total").innerHTML = ` <h6> ${ x}</h6>`;
+    document.getElementById("envio").innerHTML =` <h6> ${ subtot * 0.15}</h6>`;
+});
+document.getElementById("express").addEventListener("click", function (e) {
+    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
+    var x = subtot + subtot * 0.07
+    document.getElementById("total").innerHTML = ` <h6> ${ x}</h6>`;
+    document.getElementById("envio").innerHTML =` <h6> ${ subtot * 0.07}</h6>`;
+});
+document.getElementById("standard").addEventListener("click", function (e) {
+    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
+    var x = subtot + subtot * 0.05
+    document.getElementById("total").innerHTML = ` <h6> ${ x}</h6>`;
+    document.getElementById("envio").innerHTML =` <h6> ${ subtot * 0.05}</h6>`;
+});
 
 
+ function agregarform(){
+     var agregar = `  <form action="/action_page.php" class="was-validated">
+     <div class="form-group">
+       <label for="uname">Numero de tarjeta:</label>
+       <input type="text" class="form-control" id="numtarjeta" placeholder="Ingrese numero de tarjeta" required>
+       <div class="valid-feedback">Valid.</div>
+       <div class="invalid-feedback">Please fill out this field.</div>
+     </div>
+     <div class="form-group">
+       <label for="pwd">Codigo de seg:</label>
+       <input type="password" class="form-control" id="codigo" placeholder="Ingrese codigo"  required>
+       <div class="valid-feedback">Valid.</div>
+       <div class="invalid-feedback">Please fill out this field.</div>
+     </div>
+     <div class="form-group">
+       <label for="pwd">Vencimiento (MM/AA):</label>
+       <input type="password" class="form-control" id="vencimiento" placeholder="Ingrese vencimiento"  required>
+       <div class="valid-feedback">Valid.</div>
+       <div class="invalid-feedback">Please fill out this field.</div>
+     </div>
+    
+   </form>`
+   document.getElementById("addb").innerHTML= ""
+     document.getElementById("add").innerHTML = agregar
+ }
+ function addb(){
+    document.getElementById("add").innerHTML = ""
+    document.getElementById("addb").innerHTML = ` <div class="form-group">
+    <label for="pwd">Numero de cuenta:</label>
+    <input type="password" class="form-control" id="num" placeholder="ingrese numero de cuenta" required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>` 
+ }

@@ -94,9 +94,9 @@
         class="form-check-input"
         type="radio"
         name="exampleRadios"
-        id="exampleRadios1"
+        id="premium"
         value="option1"
-        checked
+        
       />
       <label class="form-check-label" for="exampleRadios1">
         Premium 2 a 5 dias (15%)
@@ -107,22 +107,22 @@
         class="form-check-input"
         type="radio"
         name="exampleRadios"
-        id="exampleRadios1"
+        id="express"
         value="option1"
-        checked
+        
       />
       <label class="form-check-label" for="exampleRadios1">
         Express 5 a 8 dias (7%)
       </label>
     </div>
     <div class="form-check">
-      <input
+      <input 
         class="form-check-input"
         type="radio"
         name="exampleRadios"
-        id="exampleRadios1"
+        id="standard"
         value="option1"
-        checked
+        
       />
       <label class="form-check-label" for="exampleRadios1">
         Standard 12 a 15 dias (5%)
@@ -164,9 +164,11 @@
         <h6 class="card-subtitle mb-4 text-muted">Costo unitario del producto por cantidad</h6>
       </div>
       <div class="card-body">
+        <div style="column-count: 2; column-gap: 70%; margin-bottom: 3px;">
         <h5 class="card-title">Costo de Envio</h5>
         <h6 class="card-subtitle mb-2 text-muted">Segun el tipo de envio</h6>
         <h6 style="margin-left: 0;" id="envio">0</h6>
+        </div>
       </div>
       <div class="card-body">
         <div style="column-count: 2; column-gap: 70%; margin-bottom: 3px;">
@@ -184,10 +186,39 @@
         <h5  class="card-title ">Forma de pago</h5>
         <div style="column-count: 2; width: 50%;">
         <h6 class="card-subtitle text-muted">No ha seleccionado </h6>
-       <h6 class="mt-2"><a href="#" class="card-link mt-2">Seleccionar</a></h6> 
+       <h6 class="mt-2"><a href="#" class="card-link mt-2 " data-toggle="modal" data-target="#staticBackdrop">Seleccionar</a></h6> 
       </div>
       </div>
     </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"><strong>Forma de pago</strong></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="radio" id="credito" value="credito" onclick="agregarform()">
+        <label for="credito">Tarjeta de credito</label><br>
+        <div id="add">
+        </div>
+        <input type="radio" id="bancaria" value="bancaria" onclick="addb()">
+        <label for="bancaria">Transferencia bancaria </label>
+        <div id="addb"></div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
   </div>
 </main>
 <footer class="text-muted bg-light">
