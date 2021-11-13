@@ -1,188 +1,103 @@
-let productosCarrito = [];
+const USD = 40;
+const ENVIOS = { standar: 5, express: 7, premium: 15 };
+//Función que se ejecuta una vez que se haya lanzado el evento de
+//que el documento se encuentra cargado, es decir, se encuentran todos los
+//elementos HTML presentes.
 
 
-let moneda = "UYU";
-
-/*completa la función para actualizar el subtotal del producto al modificar la cantidad del mismo*/
-function updateProductoSubtotal(id) {
-    let costo = convertir(productosCarrito[id - 1].unitCost, productosCarrito[id - 1].currency);
-    let cantidad = document.getElementById(id).value;
-    if (cantidad <= 0) {
-        cantidad = 1;
-        document.getElementById(id).value = 1;
+function showCarrito(cart) {
+    htmlContentToAppend = '';
+    for (let i = 0; i < cart.length; i++) {
+        htmlContentToAppend += `
+        <tr onchange="update(event)">
+        <th scope="col" class="${'prod'+i}"><img src="${cart[i].src}" width="100px"></th>
+            <th scope="col" class="${'prod'+i}">${cart[i].name}</th>
+            <th scope="col" class="${'prod'+i}">${cart[i].currency} <span class="cost">${cart[i].unitCost}</span></th>
+            <th scope="col" class="${'prod'+i}"><input type="number" min="1" value="${cart[i].count}" data-class="${'prod'+i}"></th>
+            <th scope="col" class="${'prod'+i}">${cart[i].currency} <span class="subTotal" data-currency="${cart[i].currency}" data-subtotal="${cart[i].unitCost * cart[i].count}">${cart[i].unitCost * cart[i].count}</span></th>
+            </tr>
+            `
+        }
+        document.getElementById('products').innerHTML = htmlContentToAppend;
+        ActualizarCostos();
     }
-    document.getElementById("subtotal" + id).innerHTML = cantidad * costo;
-    sumaSubtotales();
-
-}
-
-
-/*modificar la función showCarrito para que aparezca el subtotal del producto en base a la cantidad y precio unitario*/
-function showCarrito() {
-    /*mostrar los productos del carrito con el input correspondiente a la cantidad*/
-    let htmlToAppend = "";
-    let htmlToAppend2 = "";
-
-    let id = 1;
-    let costo = 0;
-    for (let article of productosCarrito) {
-        costo = convertir(article.unitCost, article.currency);
-
-        htmlToAppend += `
-        <tr>
-        <td><img src="${article.src}" class = "img-fluid" style ="max-width:60px!important"></td>
-        <td class="align-middle">${article.name}</td>
-        <td class="align-middle" id="unitCost${id}">${moneda} ${costo}</td>
-        <td id="subtotal${id}">${article.count * costo}</td>
-        <td class="align-middle"><input id="${id}" onchange="updateProductoSubtotal(${id});" type="number" min ="1" value=${article.count}></td>
-        </tr>`
-
-        id++;
-    }
-
-    htmlToAppend2 = `
-        <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>Suma de subtotales </td>
-        <td id="sumaSubtotal"></td>
-        </tr>`
-
-
-
-    document.getElementById("carritoo").innerHTML = htmlToAppend + htmlToAppend2;
-
-}
-
-
-function cambiarMonedas() {
-    let costoUnitario = 0;
-    let cantidad = 0;
-    for (let i = 1; i <= productosCarrito.length; i++) {
-        costoUnitario = convertir(productosCarrito[i - 1].unitCost, productosCarrito[i - 1].currency)
-        cantidad = document.getElementById(i).value;
-        if (cantidad <= 0) {
-            cantidad = 1;
-            document.getElementById(i).value = 1;        }
-        document.getElementById("subtotal" + i).innerHTML = cantidad * costoUnitario;
-        document.getElementById("unitCost" + i).innerHTML = moneda + " " + costoUnitario;
-
-    }
-    sumaSubtotales();
-}
-
-//mostrar suma de subtotales
-function sumaSubtotales() {
-
-    let subtotal = 0;
-    for (let i = 1; i <= productosCarrito.length; i++) {
-
-        subtotal = subtotal + parseFloat(document.getElementById("subtotal" + i).textContent);
-    }
-
-    document.getElementById("sumaSubtotal").innerHTML = subtotal;
-    costos()
-}
-function costos() {
-    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
-    console.log(subtot)
-    document.getElementById("ticketsubtotal").innerHTML = ` <h6 class=" text-muted"> ${subtot } </h6>`;
-   //mas costo envio
-
-}
-function convertir(costo, currency) {
-    if (moneda == 'UYU' && currency == 'USD') {
-        costo = costo * 40;
-    } else if (moneda == 'USD' && currency == 'UYU') {
-        costo = costo / 40;
-    }
-    return costo;
-}
-
-async function getCarrito(url) {
-
-    return fetch(url)
-        .then(respuesta => {
-            return respuesta.json();
-        })
-
-}
-
-
-document.addEventListener("DOMContentLoaded", function (e) {
-    getCarrito("https://japdevdep.github.io/ecommerce-api/cart/654.json")
-        .then(respuesta => {
-            productosCarrito = respuesta.articles;
-            moneda = 'UYU';
-            showCarrito();
-            sumaSubtotales();
-
-            document.getElementById("uruguayos").addEventListener("click", function (e) {
-                moneda = 'UYU';
-                cambiarMonedas();
-
-            });
-            document.getElementById("dolares").addEventListener("click", function (e) {
-                moneda = 'USD';
-                cambiarMonedas();
-
-            });
-            console.log(productosCarrito);
-        })
-})
-
-document.getElementById("premium").addEventListener("click", function (e) {
-    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
-    var x = subtot + subtot * 0.15
-    document.getElementById("total").innerHTML = ` <h6> ${ x}</h6>`;
-    document.getElementById("envio").innerHTML =` <h6> ${ subtot * 0.15}</h6>`;
-});
-document.getElementById("express").addEventListener("click", function (e) {
-    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
-    var x = subtot + subtot * 0.07
-    document.getElementById("total").innerHTML = ` <h6> ${ x}</h6>`;
-    document.getElementById("envio").innerHTML =` <h6> ${ subtot * 0.07}</h6>`;
-});
-document.getElementById("standard").addEventListener("click", function (e) {
-    var subtot = parseFloat(document.getElementById("sumaSubtotal").innerHTML)
-    var x = subtot + subtot * 0.05
-    document.getElementById("total").innerHTML = ` <h6> ${ x}</h6>`;
-    document.getElementById("envio").innerHTML =` <h6> ${ subtot * 0.05}</h6>`;
-});
-
-
- function agregarform(){
-     var agregar = `  <form action="/action_page.php" class="was-validated">
-     <div class="form-group">
-       <label for="uname">Numero de tarjeta:</label>
-       <input type="text" class="form-control" id="numtarjeta" placeholder="Ingrese numero de tarjeta" required>
-       <div class="valid-feedback">Valido.</div>
-       <div class="invalid-feedback">Complete este campo.</div>
-     </div>
-     <div class="form-group">
-       <label for="pwd">Codigo de seg:</label>
-       <input type="password" class="form-control" id="codigo" placeholder="Ingrese codigo"  required>
-       <div class="valid-feedback">Valido.</div>
-       <div class="invalid-feedback">Complete este campo.</div>
-     </div>
-     <div class="form-group">
-       <label for="pwd">Vencimiento (MM/AA):</label>
-       <input type="password" class="form-control" id="vencimiento" placeholder="Ingrese vencimiento"  required>
-       <div class="valid-feedback">Valido.</div>
-       <div class="invalid-feedback">Complete este campo.</div>
-     </div>
     
-   </form>`
-   document.getElementById("addb").innerHTML= ""
-     document.getElementById("add").innerHTML = agregar
- }
- function addb(){
-    document.getElementById("add").innerHTML = ""
-    document.getElementById("addb").innerHTML = ` <div class="form-group">
-    <label for="pwd">Numero de cuenta:</label>
-    <input type="password" class="form-control" id="num" placeholder="ingrese numero de cuenta" required>
-    <div class="valid-feedback">Valid.</div>
-    <div class="invalid-feedback">Please fill out this field.</div>
-  </div>` 
- }
+    function update(event) {
+        dataProd = document.getElementsByClassName(event.target.dataset.class);
+        // act subtotal
+        if (parseInt(dataProd[3].getElementsByTagName('input')[0].value) <= 0) {
+            dataProd[3].getElementsByTagName('input')[0].value = 1;
+        }
+        let subtotal = parseFloat(dataProd[2].getElementsByClassName('cost')[0].innerHTML) * parseInt(dataProd[3].getElementsByTagName('input')[0].value);
+        let elem = dataProd[4].getElementsByClassName('subTotal')[0];
+        elem.innerHTML = subtotal;
+        elem.dataset.subtotal = subtotal;
+        ActualizarCostos();
+    }
+    
+    function ActualizarCostos() {
+        let Tipoenvio = document.querySelector('input[type=radio]:checked');
+        let subtotal = 0;
+        let costoEnvio = 0;
+        let total = 0;
+        let subtotalProds = document.getElementsByClassName('subTotal');
+        for (elem of subtotalProds) {
+            if (elem.dataset.currency === 'USD') {
+              
+                subtotal += USD * parseFloat(elem.dataset.subtotal);
+            } else {
+                subtotal += parseFloat(elem.dataset.subtotal);
+            }
+        }
+    
+        document.getElementById('sub').innerHTML = subtotal;
+     
+        costoEnvio = subtotal * ENVIOS[Tipoenvio.id] / 100;
+        document.getElementById('env').innerHTML = costoEnvio;
+       
+        total = subtotal + costoEnvio;
+        document.getElementById('total').innerHTML = total;
+      
+    }
+    
+    function comprar(nameForm) {
+        let form = document.getElementById(nameForm);
+        let error = '';
+        for (let input of document.getElementsByClassName(nameForm + 'req')) {
+            if (input.value === '') {
+                error = alert(" Asegurese de completar los campos correspondientes a la direccion" );
+                break;
+            }
+        }
+        
+        if (error === '') {
+            form.reset();
+          
+            localStorage.setItem('compraExitosa', 'true');
+        
+        } else {
+           
+            return false;
+        }
+    }
+    document.addEventListener("DOMContentLoaded", function(e) {
+        getJSONData(CART_LETRA).then(cart => {
+            if (cart.status === 'ok') {
+                articles = cart.data.articles;
+                showCarrito(articles);
+             
+            }
+        });
+        
+        if (localStorage.getItem('compraExitosa') === 'true') {
+            localStorage.removeItem('compraExitosa');
+            document.getElementById('compraExitosa').innerHTML = `
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Su compra se realizo exitosamente.</strong> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            `;
+        }
+    });

@@ -31,6 +31,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="./css/icons.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -59,168 +61,145 @@
       </ul>
     </div>
 </nav>
-<main role="main" class="pb-5">
-  <div class="text-center p-4">
-    <h2>Carrito de compras</h2>
-  </div>
+<div class="container p-5">
+  <span id="compraExitosa">
 
-  <div style="margin-left: 65%">
-    Moneda:
-    <button id="uruguayos" class="btn btn-secondary">pesos</button>
-    <button id="dolares" class="btn btn-secondary">dolares</button>
-  </div>
-<br>
-<br>
-<!--TABLA CON PRODUCTOS DEL CARRITO-->
-  <div class="container" id="cart">
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Precio</th>
-          <th scope="col">Subtotal</th>
-          <th scope="col">Cantidad</th>
-        </tr>
-      </thead>
-      <tbody id="carritoo"></tbody>
-    </table>
-  </div>
-  <!--TIPO DE ENVIO-->
-  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
-    <h3>Tipo de envío</h3>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="exampleRadios"
-        id="premium"
-        value="option1"
-        
-      />
-      <label class="form-check-label" for="exampleRadios1">
-        Premium 2 a 5 dias (15%)
-      </label>
-    </div>
-    <div class="form-check">
-      <input
-        class="form-check-input"
-        type="radio"
-        name="exampleRadios"
-        id="express"
-        value="option1"
-        
-      />
-      <label class="form-check-label" for="exampleRadios1">
-        Express 5 a 8 dias (7%)
-      </label>
-    </div>
-    <div class="form-check">
-      <input 
-        class="form-check-input"
-        type="radio"
-        name="exampleRadios"
-        id="standard"
-        value="option1"
-        
-      />
-      <label class="form-check-label" for="exampleRadios1">
-        Standard 12 a 15 dias (5%)
-      </label>
-    </div>
-  </div>
-  <!--ENVIO-->
-  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
-    <h3>Direccion de envio</h3>
+  </span>
+  <div class="row">
+      <div class="col-md-12">
+          <h3>Carrito de compras</h3>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col">Imagen</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Precio</th>
+                      <th scope="col">Cantidad</th>
+                      <th scope="col">Subtotal</th>
+                  </tr>
+              </thead>
+              <tbody id="products">
 
-    <form>
-      <div id="emailHelp" class="form-text">No compartiremos esta informacion con nadie.</div>
-      <br> <div style="column-count: 3;">
-      <div class="mb-3">
-        <label for="" class="form-label">Calle</label>
-        <input type="" class="form-control" id="calle" required>
-        
+              </tbody>
+          </table>
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Numero</label>
-        <input type="number" class="form-control" id="numero" required>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Esquina</label>
-        <input type="" class="form-control" id="esquina" required>
-      </div>
-    </div>
-    </form>
   </div>
-<!--COSTOS-->
-  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
-    <h3>Costos</h3>
-    <div class="card" >
-      <div class="card-body">
-        <div style="column-count: 2; column-gap: 60%; margin-bottom: 3px;">
-        <h5 class="card-title" >Subtotal</h5>
-        <h6 style="margin-left: 0;" id="ticketsubtotal"></h6>
-      </div>
-        <h6 class="card-subtitle mb-4 text-muted">Costo unitario del producto por cantidad</h6>
-      </div>
-      <div class="card-body">
-        <div style="column-count: 2; column-gap: 70%; margin-bottom: 3px;">
-        <h5 class="card-title">Costo de Envio</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Segun el tipo de envio</h6>
-        <h6 style="margin-left: 0;" id="envio">0</h6>
-        </div>
-      </div>
-      <div class="card-body">
-        <div style="column-count: 2; column-gap: 70%; margin-bottom: 3px;">
-        <h5 class="card-title">Total ($)</h5>
-        <h6 style="margin-left: 0;" id="total"></h6>
-      </div>
-      </div>
-    </div>
-  </div>
-  <!--FORMA DE PAGO-->
-  <div style="margin-left: 20%; margin-right: 20%;" class="card card-body p-5">
+  <hr>
+  <div class="row" id="envios">
+      <div class="col-md-6">
+          <h3>Tipo de envío</h3>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="envio" id="standar" onclick="ActualizarCostos()" checked/>
+              <label class="form-check-label" for="standar"> Standar + 5% (12 a 15 días)</label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="envio" id="express" onclick="ActualizarCostos()" />
+              <label class="form-check-label" for="express"> Express + 7% (5 a 8 días)</label>
+          </div>
+          <div class="form-check">
+              <input class="form-check-input" type="radio" name="envio" id="premium" onclick="ActualizarCostos()" />
+              <label class="form-check-label" for="premium"> Premium + 15% (2 a 5 días)</label>
+          </div>
+          <form class="mt-4">
+              <h3>Direccion:</h3>
+              <input type="text" class="form-control mt-2 creditoreq bancoreq" data-campo="Calle" placeholder="Calle" required>
+              <input type="text" class="form-control mt-2 creditoreq bancoreq" data-campo="Número de puerta" placeholder="Numero de puerta" required>
+              <input type="text" class="form-control mt-2 creditoreq bancoreq" data-campo="Esquina" placeholder="Esquina" required>
 
-    <div class="card" >
-      <div class="card-body">
-        <h5  class="card-title ">Forma de pago</h5>
-        <div style="column-count: 2; width: 50%;">
-        <h6 class="card-subtitle text-muted">No ha seleccionado </h6>
-       <h6 class="mt-2"><a href="#" class="card-link mt-2 " data-toggle="modal" data-target="#staticBackdrop">Seleccionar</a></h6> 
+          </form>
       </div>
+      <div class="col-md-6">
+          <h3>Costos</h3>
+          <p>Subtotal: UYU <span id="sub"></span></p>
+          <p>Envío: UYU <span id="env"></span></p>
+          <hr>
+          <p style="font-weight: bold;">Total: UYU <span id="total"></span></p>
+          
+          <button type="button" class="btn btn-primary btn-block m-1" data-toggle="modal" data-target="#exampleModal">Comprar</button>
       </div>
-    </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel"><strong>Forma de pago</strong></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <input type="radio" id="credito" value="credito" onclick="agregarform()" name="elegir">
-        <label for="credito">Tarjeta de credito</label><br>
-        <div id="add">
-        </div>
-        <input type="radio" id="bancaria" value="bancaria" onclick="addb()" name="elegir">
-        <label for="bancaria">Transferencia bancaria </label>
-        <div id="addb"></div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Pago</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+          </div>
+          <div class="modal-body">
+              <div class="row">
+
+                  <div class="card col-md-12">
+                      <div class="card-header">
+                          <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                              <!-- Credit card form tabs -->
+                              <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
+                                  <li class="nav-item">
+                                      <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta de credito </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Transferencia bancaria </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Credit card form content -->
+                      <div class="tab-content">
+                          <!-- credit card info-->
+                          <div id="credit-card" class="tab-pane fade show active pt-3">
+                              <form role="form" id="credito" onsubmit="return comprar('credito')">
+                                  <div class="form-group"> <label for="username">
+                                  <h6>Titular</h6>
+                              </label> <input type="text" name="username" data-campo="Nombre titular" placeholder="Nombre del titular" required class="form-control creditoreq"> </div>
+                                  <div class="form-group"> <label for="cardNumber">
+                                  <h6>Número de tarjeta</h6>
+                              </label>
+                                      <div class="input-group"> <input type="text" data-campo="Número de tarjeta" name="cardNumber" placeholder="Número en el dorso de su tarjeta" class="form-control creditoreq" required>
+                                          <div class="input-group-append"> <span class="input-group-text text-muted"> <i class="fab fa-cc-visa mx-1"></i> <i class="fab fa-cc-mastercard mx-1"></i> <i class="fab fa-cc-amex mx-1"></i> </span> </div>
+                                      </div>
+                                  </div>
+                                  <div class="row">
+                                      <div class="col-sm-8">
+                                          <div class="form-group"> <label><span class="hidden-xs">
+                                              <h6>Vencimiento</h6>
+                                          </span></label>
+                                              <div class="input-group"> <input data-campo="Mes" type="number" placeholder="MM" name="" min="1" max="12" class="form-control creditoreq" required> <input type="number" data-campo="Año" placeholder="AA" min="21" max="99" name=""
+                                                      class="form-control creditoreq" required> </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-sm-4">
+                                          <div class="form-group mb-4"> <label data-toggle="tooltip" title="Tres digitos en el reverso de su tarjeta.">
+                                          <h6>CVV <i class="fa fa-question-circle d-inline"></i></h6>
+                                      </label> <input type="text" data-campo="Cuenta bancaria" minlength="3" maxlength="3" required class="form-control creditoreq"> </div>
+                                      </div>
+                                  </div>
+                                  <div class="card-footer"> <button type="submit" class="subscribe btn btn-primary btn-block shadow-sm"> Confirmar pago </button>
+                              </form>
+                              </div>
+                          </div>
+                          <!-- End -->
+                          <div id="net-banking" class="tab-pane fade pt-3">
+                              <form id="banco" onsubmit="return comprar('banco')">
+                                  <div class="form-group"> <label for="banco">
+                                  <h6>Cuenta bancaria</h6>
+                              </label> <input type="text" name="banco" placeholder="Cuenta bancaria" required class="form-control bancoreq"> </div>
+                                  <div class="form-group">
+                                      <p> <button type="submit" class="btn btn-primary"><i class="fas fa-mobile-alt mr-2"></i> Confirmar pago</button> </p>
+                                  </div>
+                              </form>
+                          </div>
+                     
+                          <!-- End -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
-</main>
+</div>
 <footer class="text-muted bg-light">
   <div class="container">
     <p class="float-right">
